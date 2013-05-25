@@ -1,8 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
-job {
-  color:#000000;
-
 body {
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -33,6 +30,10 @@ h2 {
 
 h3, h4, h5, h6 {
   color:#494949;
+}
+
+job {
+  color:#000000;
 }
 
 a {
