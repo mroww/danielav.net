@@ -10,6 +10,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color:#001E1E;
   margin:0 0 20px;
+  text-decoration: bold;
 }
 
 p, ul, ol, table, pre, dl {
@@ -34,6 +35,7 @@ h3, h4, h5, h6 {
 
 job {
   color:#000000;
+  text-decoration:underline;
 }
 
 a {
