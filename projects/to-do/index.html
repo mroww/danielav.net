@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+    </head>
+
+    <body>
+        <div id="header"></div>
+        <div id="body">
+            <h3>What should you do today?</h3>
+            <input type="radio" name="additionType" value="Append" id="radioA" /> Append
+            <input type="radio" name="additionType" value="Prepend" id="radioP" /> Prepend
+            <input type="button" value="Remove all" id="remove">
+            <!-- <input type="button" value="Load" id="load"> -->
+            <!-- <input type="button" value="Save" id="save"> -->
+            <input type="text" id="label-text" /> 
+            <br>
+            <input type="button" value="Checkboxify" id="create" />
+            <div id="listing">
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+
+        var additionType = 'prepend'; // or append
+
+        var createTodoElement = function(id, text) {
+            // Set the HTML of the new element to be an empty string.
+            var HTML = '';
+         
+            // Add things to it.
+            HTML = HTML + '<div id="todo_' + id + '">';
+            HTML = HTML + '  <input type="checkbox" id="cbox_' + id + '">';
+            HTML = HTML + '  <span class="todoText" id="text_' + id + '">' + text + '</span>';
+            HTML = HTML + '  <img class="deleteBtn" src="http://www.iconsdb.com/icons/download/brown/x-mark-16.gif">';
+            HTML = HTML + '  <br/>';
+            HTML = HTML + '</div>';
+         
+            // Create a jQuery element from the newly create HTML.
+            var element = $(HTML);
+         
+            // Find the checkbox inside our new element
+            // and handle the click event.
+            $(element).find('input[type="checkbox"]').click(function() {
+                var isChecked = $(this).is(':checked');
+                if (isChecked) {
+                    $(this).parent().find('span.todoText').css('text-decoration', 'line-through');
+                } else {
+                    $(this).parent().find('span.todoText').css('text-decoration', 'none');
+                }
+            })
+            
+            // When the "X" image is clicked, remove the wrapper <div>
+            // and everything in it.
+            $(element).find('img.deleteBtn').click(function() {
+                $(this).parent().remove();
+            })
+         
+            // Return the brand new HTML element.
+            return element;
+        }
+
+        var execute = function() {
+            var text = $('#label-text').val();
+            var id = 1;
+            var newTodo = createTodoElement(id, text);
+            if (additionType == 'append') {
+                $('#listing').append(newTodo);
+            } else {
+                $('#listing').prepend(newTodo);
+            }
+            $('#label-text').val('');
+        }
+
+        $('#create').click(function() {
+            execute();
+        })
+
+        $('#label-text').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+                execute();
+            }
+        })
+
+        $('#radioA').click(function() {
+            additionType = 'append';
+        })
+
+        $('#radioP').click(function() {
+            additionType = 'prepend';
+        })
+
+        $('#remove').click(function() {
+            $('#listing').empty();
+        })
+
+
+    </script>
+
+</html>
