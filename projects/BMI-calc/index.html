@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<title>BMI calculator</title>
+</head>
+
+
+<body>
+	
+	<div id="calc-bord">
+		Height: <input type="text" id="height">
+		Weight: <input type="text" id="weight">
+		<input type="button" id="calculate" value="Calculate">
+		<br> <br>
+		<span>You have a BMI of </span><div id="res"></div>
+	</div>
+
+</body>
+
+	<script type="text/javascript">
+
+	var execute = function() {
+		var height = $('#height').val();
+		var weight = $('#weight').val();
+		var calculated_bmi = BMI(height, weight);
+		$('#res').text(calculated_bmi);
+	}
+
+	var BMI = function(h, w) {
+		var h = h/100; // convert to meters
+		var h_squared = h * h;
+		var result = w / h_squared;
+		return result.toFixed(1);
+	}
+
+	$('#calculate').click(function() {
+		execute();
+	})
+
+
+
+	</script>
+
+</html>
