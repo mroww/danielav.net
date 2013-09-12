@@ -34,16 +34,16 @@
 		if (calculated_bmi>40) {
 			$('#clas').text('morbidly obese');
 	}
-		if (calculated_bmi>35<40) {
+		if (calculated_bmi>35 && calculated_bmi<40) {
 			$('#clas').text('obese class 2');
 		}
-		if (calculated_bmi>30<35) {
+		if (calculated_bmi>30 && calculated_bmi<35) {
 			$('#clas').text('obese class 1');
 		}
-		if (calculated_bmi>25<30) {
+		if (calculated_bmi>25 && calculated_bmi<30) {
 			$('#clas').text('overweight');
 		}
-		if (calculated_bmi>18.5<25) {
+		if (calculated_bmi>18.5 && calculated_bmi<25) {
 			$('#clas').text('having normal weight');
 		}
 		if (calculated_bmi<18.5) {
