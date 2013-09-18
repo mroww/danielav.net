@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,26 +9,55 @@
 
 
 <body>
-	
-	<div id="calc-bord">
-		<table>
-			<tr>
-				<td><span>Height: </span></td>
-				<td><input type="text" id="height" class="prm"> cm</td>
-			</tr>
-			<br>
-			<tr>
-				<td><span>Weight: </span></td>
-				<td><input type="text" id="weight" class="prm"> kg</td>
-			</tr>
-			<br>
-		</table>
+	<div id="conts">
+		<div id="title">
+			<span>Body mass index calculators</span>
+		</div>
+		<div id="calc-bord">
+			<div id="calc1">
+				<span>BMI calculator</span>
+			</div>
+			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="height" class="prm"> cm</td>
+				</tr>
+				<br>
+				<tr>
+					<td><span>Weight: </span></td>
+					<td><input type="text" id="weight" class="prm"> kg</td>
+				</tr>
+				<br>
+			</table>
 			<input type="button" id="calculate" value="Calculate">
 			<br> <br>
 			<span>You have a BMI of </span><div id="res"></div>
 			<br> <br>
 			<span id="bmic" style="display: none">According to your body mass index, you clasify as <span id="clas"></span>.</span>
+		</div>
+
+		<div id="rcalc-bord">
+			<div id="calc2">
+				<span>Reversed BMI calculator</span>
+			</div>
+			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="rheight" class="prm"> cm </td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<td><span>Goal BMI: </span></td>
+					<td><input type="text" id="rvbmi" class="prm"></td> 
+			</table>
+			<input type="button" id="rvcalculate" value="Calculate">
+			<br> <br>
+			<div>You would need to have <span id="rres"></span> kg </div>
+
+		</div>
 	</div>
+
 
 </body>
 
@@ -66,7 +96,7 @@
 		var h = h/100; // convert to meters
 		var h_squared = h * h;
 		var result = w / h_squared;
-		return result.toFixed(1);
+		return result.toFixed(2);
 	}
 
 	$('#calculate').click(function() {
@@ -80,6 +110,32 @@
             }
         })
 
+
+	var rexecute = function() {
+		var rheight = $('#rheight').val();
+		var rbmi = $('#rvbmi').val();
+		var rcalculated_bmi = RBMI(rheight, rbmi);
+		$('#rres').text(rcalculated_bmi);
+
+	}
+
+	var RBMI = function(h, b) {
+		var h = h/100;
+		var h_squared = h * h;
+		var result = b * h_squared;
+		return result.toFixed(2);
+	}
+
+	$('#rvcalculate').click(function() {
+		rexecute();
+	})
+
+	$('#rvbmi').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+                rexecute();
+            }
+        })
 
 	</script>
 

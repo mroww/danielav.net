@@ -5,12 +5,21 @@ body {
 #calc-bord {
 	border: 5px solid #242424;
 	border-radius: 2%;
-	width: 250px;
+	width: 300px;
 	height: 500px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top: 50px;
+	margin: 25px;
 	padding: 15px;
+	float: left;
+}
+
+#rcalc-bord {
+	border: 5px solid #242424;
+	border-radius: 2%;
+	width: 300px;
+	height: 500px;
+	margin: 25px;
+	padding: 15px;
+	float: left;
 }
 
 #res {
@@ -19,7 +28,7 @@ body {
 	border: 2px solid white; 
     border-radius: 5%;
 	display: inline-block;
-	margin: 0px;
+	margin-left: 100px;
 	padding: 0;
 	vertical-align: middle;
     -webkit-box-shadow: 
@@ -35,9 +44,30 @@ body {
     background: rgba(255,255,255,0.5);
     margin: 0 0 10px 0;
 }
+#rres {
+	height: 10px;
+	width: 30px;
+	border: 2px solid white;
+	border-radius: 5%;
+	display: inline-block;
+	padding: 0;
+	vertical-align: middle;
+	-webkit-box-shadow: 
+      inset 0 0 4px  rgba(0,0,0,0.1),
+            0 0 8px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 4px  rgba(0,0,0,0.1),
+            0 0 8px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 4px  rgba(0,0,0,0.1),
+            0 0 8px rgba(0,0,0,0.1); 
+    padding: 10px;
+    background: rgba(255,255,255,0.5);
+
+}
 
 .prm {
-	height: 20px;
+	height: 15px;
 	width: 50px;
 	border: 2px solid white; 
     border-radius: 5%;
@@ -54,7 +84,7 @@ body {
     box-shadow: 
       inset 0 0 4px  rgba(0,0,0,0.1),
             0 0 8px rgba(0,0,0,0.1); 
-    padding: 10px;
+    padding: 5px;
     background: rgba(255,255,255,0.5);
     margin: 0 0 10px 0;
 }
@@ -62,4 +92,35 @@ body {
 #res {
 	text-align: center;
 	margin: 3px;
+	vertical-align: middle;
+}
+
+#rres {
+	text-align: center;
+	margin: 3px;
+	vertical-align: middle;
+}
+
+
+#conts {
+	border: 5px solid #242424;
+	border-radius: 2%;
+	width: 780px;
+	height: 650px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 50px;
+	padding: 15px;
+}
+
+#calc1, #calc2 {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}
+
+#title {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
 }
