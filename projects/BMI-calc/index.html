@@ -56,6 +56,38 @@
 			<div>You would need to have <span id="rres"></span> kg </div>
 
 		</div>
+
+		<div id="bmr-bord">
+			<div id="calc3">
+				<span>BMR calculator</span>			
+			</div>
+			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="bmrh" class="prm"> cm</td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<td><span>Weight: </span></td>
+					<td><input type="text" id="bmrw" class="prm"> kg</td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<td><span>Age: </span></td>
+					<td><input type="text" id="bmra" class="prm"> years</td>
+				</tr>
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="bmrm" name="rbtn"> Male</td>
+					<td><input type="radio" id="bmrf" name="rbtn"> Female</td>
+				</tr>
+			</table>
+			<input type="button" id="bmrcalculate" value="Calculate">
+			<br> <br>
+			<div>You have a BMR of <span id="bmres"></span>. </div>
+		</div>
 	</div>
 
 
@@ -137,6 +169,50 @@
             }
         })
 
-	</script>
+	var bmrexecutem = function() {
+		var bmrheight = $('#bmrh').val();
+		var bmrweight = $('#bmrw').val();
+		var bmrage = $('#bmra').val();
+		var calculated_bmrm = BMRm(bmrheight, bmrweight, bmrage);
+		$('#bmres').text(calculated_bmrm);
 
+	}
+
+	var bmrexecutef = function() {
+		var bmrheight = $('#bmrh').val();
+		var bmrweight = $('#bmrw').val();
+		var bmrage = $('#bmra').val();
+		var calculated_bmrf = BMRf(bmrheight, bmrweight, bmrage);
+		$('#bmres').text(calculated_bmrf);
+
+	}
+
+	var BMRm = function(h, w, a, plus) {
+		var h = (h*6.25);
+		var w = (w*10);
+		var a = (a*5);
+		var plus = 5;
+		var mresult= h+w-a+plus;
+		return mresult.toFixed(2);
+	}
+
+	var BMRf = function(h, w, a, plus) {
+		var h = (h*6.25);
+		var w = (w*10);
+		var a = (a*5);
+		var plus = 161;
+		var fresult= h+w-a-plus;
+		return fresult.toFixed(2);
+		}
+   
+
+	$('#bmrcalculate').click(function() {
+		if($('#bmrm').is(':checked')) {
+			bmrexecutem();
+		}
+		if($('#bmrf').is(':checked')) {
+			bmrexecutef();
+		}
+	})
+	</script>
 </html>
