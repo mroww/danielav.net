@@ -11,31 +11,63 @@
 <body>
 	<div id="conts">
 		<div id="title">
-			<span>Body mass index calculators</span>
+			<span id="bmictitle">Body mass index calculators</span>
+			<br>
+			<span id="note1">Maybe if these are unfinished on git instead of just locally, I will pressure myself into getting them done sooner.</span>
 		</div>
+		<div id="nm1">BMI calculator</div>
 		<div id="calc-bord">
 			<div id="calc1">
 				<span>BMI calculator</span>
 			</div>
-			<table>
-				<tr>
-					<td><span>Height: </span></td>
-					<td><input type="text" id="height" class="prm"> cm</td>
-				</tr>
-				<br>
-				<tr>
-					<td><span>Weight: </span></td>
-					<td><input type="text" id="weight" class="prm"> kg</td>
-				</tr>
-				<br>
-			</table>
-			<input type="button" id="calculate" value="Calculate">
-			<br> <br>
-			<span>You have a BMI of </span><div id="res"></div>
-			<br> <br>
-			<span id="bmic" style="display: none">According to your body mass index, you clasify as <span id="clas"></span>.</span>
+			<br><br>
+			<div id="switch1">
+			<div class="onoffswitch">
+    			<input type="radio" name="radiome" class="radiomes" id="radio-me"> English
+    			<input type="radio" name="radiome" class="radiomes" id="radio-em"> Metric
+			</div>
+			</div>
+			<div id="metricbmi" style="display:none">
+				<table>
+					<tr>
+						<td><span>Height: </span></td>
+						<td><input type="text" id="height" class="prm"> cm</td>
+					</tr>
+					<br>
+					<tr>
+						<td><span>Weight: </span></td>
+						<td><input type="text" id="weight" class="prm"> kg</td>
+					</tr>
+					<br>
+				</table>
+				<input type="button" id="calculate" value="Calculate">
+				<br> <br>
+				<span>You have a BMI of </span><div id="res"></div>
+				<br> <br>
+				<span id="bmic" style="display: none">According to your body mass index, you clasify as <span id="clas"></span>.</span>
+			</div>
+			<div id="englishbmi">
+				<table>
+					<tr>
+						<td><span>Height: </span></td>
+						<td><input type="text" id="eheight" class="prm"> in</td>
+					</tr>
+					<br>
+					<tr>
+						<td><span>Weight: </span></td>
+						<td><input type="text" id="eweight" class="prm"> lbs</td>
+					</tr>
+					<br>
+				</table>
+				<input type="button" id="ecalculate" value="Calculate">
+				<br> <br>
+				<span>You have a BMI of </span><div id="eres" class="prm"></div>
+				<br> <br>
+				<span id="ebmic" style="display: none">According to your body mass index, you clasify as <span id="eclas"></span>.</span>
+			</div>
 		</div>
 
+		<div id="nm2">Reversed BMI calculator</div>
 		<div id="rcalc-bord">
 			<div id="calc2">
 				<span>Reversed BMI calculator</span>
@@ -57,11 +89,17 @@
 
 		</div>
 
+		<div id="nm3">BMR calculator</div>
 		<div id="bmr-bord">
 			<div id="calc3">
 				<span>BMR calculator</span>			
 			</div>
 			<table>
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="bmrm" name="rbtn" class="bmrr"> Male</td>
+					<td><input type="radio" id="bmrf" name="rbtn" class="bmrr"> Female</td>
+				</tr>
 				<tr>
 					<td><span>Height: </span></td>
 					<td><input type="text" id="bmrh" class="prm"> cm</td>
@@ -78,15 +116,46 @@
 					<td><span>Age: </span></td>
 					<td><input type="text" id="bmra" class="prm"> years</td>
 				</tr>
-				<tr>
-					<td><span>Gender: </span></td>
-					<td><input type="radio" id="bmrm" name="rbtn"> Male</td>
-					<td><input type="radio" id="bmrf" name="rbtn"> Female</td>
-				</tr>
 			</table>
 			<input type="button" id="bmrcalculate" value="Calculate">
 			<br> <br>
-			<div>You have a BMR of <span id="bmres"></span>. </div>
+			<div>You have a BMR of <span id="bmres" class="prm"></span> </div>
+		</div>
+
+		<div id="nm4">Body fat percentage calculator</div>
+		<div id="bfp-bord">
+			<div id="calc4">
+				<span>Body fat percentage calculator</span>
+			</div>
+			<table>
+				<tr>
+					<td><span>Waist: </span></td>
+					<td><input type="text" id="bfpw" class="prm"> cm</td>
+				</tr>
+				<tr id="sh">
+					<td><span>Hips: </span></td>
+					<td><input type="text" id="bfphip" class="prm"> cm</td>
+				</tr>
+				<tr>
+					<td><span>Neck: </span></td>
+					<td><input type="text" id="bfpn" class="prm"> cm</td>
+				</tr>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="bfph" class="prm"> cm</td>
+				</tr>
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="bfpm" class="genr" name="rbtnfat"> Male</td>
+					<td><input type="radio" id="bfpf" class="genr" name="rbtnfat"> Female</td>
+				</tr>
+			</table>
+			<br>
+			
+			<br>
+			<input type="button" value="Calculate" id="fatcalculate">
+			<br> <br>
+			<div>You have a body fat percentage of <span id="bfres"></span>.</div>
 		</div>
 	</div>
 
@@ -94,6 +163,19 @@
 </body>
 
 	<script type="text/javascript">
+
+		$('.radiomes').click(function() {
+			if($('#radio-me').is(':checked')) {
+				console.log('1');
+	 			$('#metricbmi').hide();
+	 			$('#englishbmi').show();
+		};
+			if ($('#radio-em').is(':checked')) {
+				console.log('2');
+				$('#englishbmi').hide();
+	 			$('#metricbmi').show();
+			}
+		})
 
 	var execute = function() {
 		var height = $('#height').val();
@@ -105,7 +187,7 @@
 
 		if (calculated_bmi>40) {
 			$('#clas').text('morbidly obese');
-	}
+		}
 		if (calculated_bmi>35 && calculated_bmi<40) {
 			$('#clas').text('obese class 2');
 		}
@@ -113,7 +195,7 @@
 			$('#clas').text('obese class 1');
 		}
 		if (calculated_bmi>25 && calculated_bmi<30) {
-			$('#clas').text('super awesome');
+			$('#clas').text('being overweight');
 		}
 		if (calculated_bmi>18.5 && calculated_bmi<25) {
 			$('#clas').text('having normal weight');
@@ -142,6 +224,55 @@
             }
         })
 
+		var eexecute = function() {
+		var eheight = $('#eheight').val();
+		var eweight = $('#eweight').val();
+		var ecalculated_bmi = eBMI(eheight, eweight);
+		$('#eres').text(ecalculated_bmi);
+
+		$('#ebmic').css("display", "inline");
+
+		if (ecalculated_bmi>40) {
+			$('#eclas').text('morbidly obese');
+		}
+		if (ecalculated_bmi>35 && ecalculated_bmi<40) {
+			$('#eclas').text('obese class 2');
+		}
+		if (ecalculated_bmi>30 && ecalculated_bmi<35) {
+			$('#eclas').text('obese class 1');
+		}
+		if (ecalculated_bmi>25 && ecalculated_bmi<30) {
+			$('#eclas').text('being overweight');
+		}
+		if (ecalculated_bmi>18.5 && ecalculated_bmi<25) {
+			$('#eclas').text('having normal weight');
+		}
+		if (ecalculated_bmi<18.5) {
+			$('#eclas').text('underweight');
+		}
+
+	}
+
+	var eBMI = function(eh, ew) {
+		var eh
+		var ew
+		var eh_squared = eh * eh;
+		var eresult = (ew / eh_squared)*703;
+		return eresult.toFixed(2);
+	}
+
+	$('#ecalculate').click(function() {
+		eexecute();
+	})
+
+	$('#eweight').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+                eexecute();
+            }
+        })
+
+
 
 	var rexecute = function() {
 		var rheight = $('#rheight').val();
@@ -169,6 +300,55 @@
             }
         })
 
+	var eexecute = function() {
+		var eheight = $('#eheight').val();
+		var eweight = $('#eweight').val();
+		var ecalculated_bmi = eBMI(eheight, eweight);
+		$('#eres').text(ecalculated_bmi);
+
+		$('#ebmic').css("display", "inline");
+
+		if (ecalculated_bmi>40) {
+			$('#eclas').text('morbidly obese');
+		}
+		if (ecalculated_bmi>35 && ecalculated_bmi<40) {
+			$('#eclas').text('obese class 2');
+		}
+		if (ecalculated_bmi>30 && ecalculated_bmi<35) {
+			$('#eclas').text('obese class 1');
+		}
+		if (ecalculated_bmi>25 && ecalculated_bmi<30) {
+			$('#eclas').text('being overweight');
+		}
+		if (ecalculated_bmi>18.5 && ecalculated_bmi<25) {
+			$('#eclas').text('having normal weight');
+		}
+		if (ecalculated_bmi<18.5) {
+			$('#eclas').text('underweight');
+		}
+
+	}
+
+	var eBMI = function(eh, ew) {
+		var eh
+		var ew
+		var eh_squared = eh * eh;
+		var eresult = (ew / eh_squared)*703;
+		return eresult.toFixed(2);
+	}
+
+	$('#ecalculate').click(function() {
+		execute();
+	})
+
+	$('#eweight').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+                execute();
+            }
+        })
+
+
 	var bmrexecutem = function() {
 		var bmrheight = $('#bmrh').val();
 		var bmrweight = $('#bmrw').val();
@@ -193,7 +373,7 @@
 		var a = (a*5);
 		var plus = 5;
 		var mresult= h+w-a+plus;
-		return mresult.toFixed(2);
+		return mresult.toFixed(1);
 	}
 
 	var BMRf = function(h, w, a, plus) {
@@ -202,7 +382,7 @@
 		var a = (a*5);
 		var plus = 161;
 		var fresult= h+w-a-plus;
-		return fresult.toFixed(2);
+		return fresult.toFixed(1);
 		}
    
 
@@ -214,5 +394,117 @@
 			bmrexecutef();
 		}
 	})
+
+	$('#bmra').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+            	if($('#bmrm').is(':checked')) {
+            		bmrexecutem();
+            	}
+            	if($('#bmrf').is(':checked')) {
+            		bmrexecutef();
+            	}
+            }
+        });
+
+	function log10(val) {
+		return Math.log(val) / Math.LN10;
+	}
+
+	$('.genr').click(function() { 
+		if($('#bfpm').is(':checked')){
+	 		$('#sh').hide();
+		};
+		if($('#bfpf').is(':checked')){
+			$('#sh').show();
+		};
+	 })
+
+	
+
+	var BFPexecutem = function() {
+		var bfpwaist = $('#bfpw').val();
+		var bfpneck = $('#bfpn').val();
+		var bfpheight = $('#bfph').val();
+		var calculated_bfpm = BFPm(bfpwaist, bfpneck, bfpheight);
+		$('#bfres').text(calculated_bfpm);
+	}
+
+	var BFPexecutef = function() {
+		var bfpfwaist = $('#bfpw').val();
+		var bfpfhip = $('#bfphip').val();
+		var bfpfneck = $('#bfpn').val();
+		var bfpfheight = $('#bfph').val();
+		var calculated_bfpf = BFPf(bfpfwaist, bfpfhip, bfpfneck, bfpfheight);
+		$('#bfres').text(calculated_bfpf);
+	}
+
+	var BFPm = function(bfpwaist, bfpneck, bfpheight, p1, p2, p3, a, b) {
+		var bfpwaist;
+		var bfpneck;
+		var bfpheight;
+		var p1 = 86.010;
+		var p2 = 70.041;
+		var p3 = 30.30;
+		var a = log10(bfpwaist - bfpneck);
+		var b = log10(bfpheight);
+		var bfpmresult = p1 * a - p2 * b + p3;
+		return bfpmresult.toFixed(2);
+	}
+
+	var BFPf = function(bfpfwaist, bfpfhip, bfpfneck, bfpfheight, pf1, pf2, pf3, af, bf) {
+		var bfpfwaist;
+		var bfpfhip;
+		var bfpfneck;
+		var bfpfheight;
+		var pf1 = 163.205;
+		var pf2 = 97.684;
+		var pf3 = 104.912;
+		var af = log10((bfpfwaist + bfpfhip) - bfpfneck);
+		var bf = log10(bfpfheight);
+		var bfpfresult = ((pf1 * af) - (pf2 * bf) - pf3);
+		return bfpfresult.toFixed(2);
+	}
+
+
+	$('#fatcalculate').click(function() {
+		if($('#bfpm').is(':checked')) {
+			BFPexecutem();
+		};
+		if($('#bfpf').is(':checked')) {
+			BFPexecutef();
+		}
+	});
+
+	$("#nm1").click(function(){
+		$("#calc-bord").slideToggle();
+		$("#rcalc-bord").slideUp();
+		$("#bmr-bord").slideUp();
+		$("#bfp-bord").slideUp();
+	});
+
+	$("#nm2").click(function(){
+		$("#rcalc-bord").slideToggle();
+		$("#calc-bord").slideUp();
+		$("#bmr-bord").slideUp();
+		$("#bfp-bord").slideUp();
+	});
+
+	$("#nm3").click(function(){
+		$("#bmr-bord").slideToggle();
+		$("#calc-bord").slideUp();
+		$("#rcalc-bord").slideUp();
+		$("#bfp-bord").slideUp();
+	});
+	
+	$("#nm4").click(function(){
+		$("#bfp-bord").slideToggle();
+		$("#calc-bord").slideUp();
+		$("#rcalc-bord").slideUp();
+		$("#bmr-bord").slideUp();
+	});
+
+
+
 	</script>
 </html>
