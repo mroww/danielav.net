@@ -27,7 +27,7 @@
     			<input type="radio" name="radiome" class="radiomes" id="radio-em"> Metric
 			</div>
 			</div>
-			<div id="metricbmi" style="display:none">
+			<div id="metricbmi">
 				<table>
 					<tr>
 						<td><span>Height: </span></td>
@@ -44,13 +44,13 @@
 				<br> <br>
 				<span>You have a BMI of </span><div id="res"></div>
 				<br> <br>
-				<span id="bmic" style="display: none">According to your body mass index, you clasify as <span id="clas"></span>.</span>
+				<span id="bmic" style="display: none">According to your body mass index, you classify as <span id="clas"></span>.</span>
 			</div>
-			<div id="englishbmi">
+			<div id="englishbmi"  style="display:none">
 				<table>
 					<tr>
 						<td><span>Height: </span></td>
-						<td><input type="text" id="eheight" class="prm"> in</td>
+						<td><input type="text" id="eheightf" class="prm"> ft <input type="text" id="eheighti" class="prm"> in</td>
 					</tr>
 					<br>
 					<tr>
@@ -61,32 +61,55 @@
 				</table>
 				<input type="button" id="ecalculate" value="Calculate">
 				<br> <br>
-				<span>You have a BMI of </span><div id="eres" class="prm"></div>
+				<span>You have a BMI of </span><div id="eres"></div>
 				<br> <br>
-				<span id="ebmic" style="display: none">According to your body mass index, you clasify as <span id="eclas"></span>.</span>
+				<span id="ebmic" style="display: none">According to your body mass index, you classify as <span id="eclas"></span>.</span>
 			</div>
 		</div>
 
 		<div id="nm2">Reversed BMI calculator</div>
 		<div id="rcalc-bord">
 			<div id="calc2">
-				<span>Reversed BMI calculator</span>
+				<span>Reversed BMI calculator</span>		
 			</div>
+			<br> <br>
+			<div id="switch1">
+			<div class="onoffswitch">
+    			<input type="radio" name="radiome" class="rradiomes" id="radio-rme"> English
+    			<input type="radio" name="radiome" class="rradiomes" id="radio-rem"> Metric
+			</div>
+			</div>
+			<br><br>
+			<div id="metricrbmi" style="display:none">
 			<table>
 				<tr>
 					<td><span>Height: </span></td>
 					<td><input type="text" id="rheight" class="prm"> cm </td>
 				</tr>
-				<br>
-				<br>
 				<tr>
 					<td><span>Goal BMI: </span></td>
 					<td><input type="text" id="rvbmi" class="prm"></td> 
+				</tr>
 			</table>
 			<input type="button" id="rvcalculate" value="Calculate">
 			<br> <br>
 			<div>You would need to have <span id="rres"></span> kg </div>
-
+			</div>
+			<div id="englishrbmi">
+			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="erheight" class="prm"> in </td>
+				</tr>
+				<tr>
+					<td><span>Goal BMI: </span></td>
+					<td><input type="text" id="ervbmi" class="prm"></td> 
+				</tr>
+			</table>
+			<input type="button" id="ervcalculate" value="Calculate">
+			<br> <br>
+			<div>You would need to have <span id="erres"></span> lbs </div>
+			</div>
 		</div>
 
 		<div id="nm3">BMR calculator</div>
@@ -94,6 +117,14 @@
 			<div id="calc3">
 				<span>BMR calculator</span>			
 			</div>
+			<br><br>
+			<div id="switch3">
+			<div class="onoffswitch">
+    			<input type="radio" name="radiome" class="rradiomes" id="radio-bmre"> English
+    			<input type="radio" name="radiome" class="rradiomes" id="radio-bmrm"> Metric
+			</div>
+			</div>
+			<div id="metricbmr" style="display:none">
 			<table>
 				<tr>
 					<td><span>Gender: </span></td>
@@ -104,8 +135,6 @@
 					<td><span>Height: </span></td>
 					<td><input type="text" id="bmrh" class="prm"> cm</td>
 				</tr>
-				<br>
-				<br>
 				<tr>
 					<td><span>Weight: </span></td>
 					<td><input type="text" id="bmrw" class="prm"> kg</td>
@@ -120,6 +149,34 @@
 			<input type="button" id="bmrcalculate" value="Calculate">
 			<br> <br>
 			<div>You have a BMR of <span id="bmres" class="prm"></span> </div>
+			</div>
+
+			<div id="englishbmr">
+			<table>
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="ebmrm" name="rbtn" class="bmrr"> Male</td>
+					<td><input type="radio" id="ebmrf" name="rbtn" class="bmrr"> Female</td>
+				</tr>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="ebmrh" class="prm"> in</td>
+				</tr>
+				<tr>
+					<td><span>Weight: </span></td>
+					<td><input type="text" id="ebmrw" class="prm"> lbs</td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<td><span>Age: </span></td>
+					<td><input type="text" id="ebmra" class="prm"> years</td>
+				</tr>
+			</table>
+			<input type="button" id="ebmrcalculate" value="Calculate">
+			<br> <br>
+			<div>You have a BMR of <span id="ebmres" class="prm"></span> </div>
+			</div>
 		</div>
 
 		<div id="nm4">Body fat percentage calculator</div>
@@ -158,8 +215,6 @@
 			<div>You have a body fat percentage of <span id="bfres"></span>.</div>
 		</div>
 	</div>
-
-
 </body>
 
 	<script type="text/javascript">
@@ -174,6 +229,19 @@
 				console.log('2');
 				$('#englishbmi').hide();
 	 			$('#metricbmi').show();
+			}
+		})
+
+		$('.rradiomes').click(function() {
+			if($('#radio-rme').is(':checked')) {
+				console.log('1');
+	 			$('#metricrbmi').hide();
+	 			$('#englishrbmi').show();
+		};
+			if ($('#radio-rem').is(':checked')) {
+				console.log('2');
+				$('#englishrbmi').hide();
+	 			$('#metricrbmi').show();
 			}
 		})
 
@@ -225,9 +293,10 @@
         })
 
 		var eexecute = function() {
-		var eheight = $('#eheight').val();
+		var eheightf = $('#eheightf').val();
+		var eheighti = $('#eheighti').val();
 		var eweight = $('#eweight').val();
-		var ecalculated_bmi = eBMI(eheight, eweight);
+		var ecalculated_bmi = eBMI(eheightf, eheighti, eweight);
 		$('#eres').text(ecalculated_bmi);
 
 		$('#ebmic').css("display", "inline");
@@ -253,11 +322,15 @@
 
 	}
 
-	var eBMI = function(eh, ew) {
-		var eh
-		var ew
-		var eh_squared = eh * eh;
-		var eresult = (ew / eh_squared)*703;
+	var eBMI = function(ehf, ehi, ewt) {
+		var ehf;
+		var ehi;
+		var ewt;
+		var stepone = (ehf*12);
+		var steptwo = (stepone+ehi);
+		var stepthree = (steptwo*steptwo);
+		var stepfour = (ewt / stepthree);
+		var eresult = (stepfour * 703);
 		return eresult.toFixed(2);
 	}
 
@@ -297,54 +370,6 @@
             var code = (e.keyCode ? e.keyCode : e.which);
             if(code == 13) {
                 rexecute();
-            }
-        })
-
-	var eexecute = function() {
-		var eheight = $('#eheight').val();
-		var eweight = $('#eweight').val();
-		var ecalculated_bmi = eBMI(eheight, eweight);
-		$('#eres').text(ecalculated_bmi);
-
-		$('#ebmic').css("display", "inline");
-
-		if (ecalculated_bmi>40) {
-			$('#eclas').text('morbidly obese');
-		}
-		if (ecalculated_bmi>35 && ecalculated_bmi<40) {
-			$('#eclas').text('obese class 2');
-		}
-		if (ecalculated_bmi>30 && ecalculated_bmi<35) {
-			$('#eclas').text('obese class 1');
-		}
-		if (ecalculated_bmi>25 && ecalculated_bmi<30) {
-			$('#eclas').text('being overweight');
-		}
-		if (ecalculated_bmi>18.5 && ecalculated_bmi<25) {
-			$('#eclas').text('having normal weight');
-		}
-		if (ecalculated_bmi<18.5) {
-			$('#eclas').text('underweight');
-		}
-
-	}
-
-	var eBMI = function(eh, ew) {
-		var eh
-		var ew
-		var eh_squared = eh * eh;
-		var eresult = (ew / eh_squared)*703;
-		return eresult.toFixed(2);
-	}
-
-	$('#ecalculate').click(function() {
-		execute();
-	})
-
-	$('#eweight').on('keypress', function(e) {
-            var code = (e.keyCode ? e.keyCode : e.which);
-            if(code == 13) {
-                execute();
             }
         })
 

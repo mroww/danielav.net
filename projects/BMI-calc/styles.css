@@ -62,7 +62,7 @@ body {
 	display: none;
 }
 
-#res {
+#res, #eres {
 	height: 10px;
 	width: 50px;
 	border: 2px solid white; 
@@ -84,7 +84,7 @@ body {
     background: rgba(255,255,255,0.5);
     margin: 0 0 10px 0;
 }
-#rres {
+#rres, #erres {
 	height: 10px;
 	width: 30px;
 	border: 2px solid white;
@@ -151,19 +151,19 @@ body {
     margin: 0 0 10px 0;
 }
 
-#res {
+/*#res {*/
 	text-align: center;
 	margin: 3px;
 	vertical-align: middle;
 }
 
-#eres {
+/*#eres {*/
 	text-align: center;
 	margin: 3px;
 	vertical-align: middle;
 }
 
-#rres {
+#rres, #erres {
 	text-align: center;
 	margin: 3px;
 	vertical-align: middle;
