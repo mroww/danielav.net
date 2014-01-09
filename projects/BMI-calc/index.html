@@ -293,10 +293,10 @@
         })
 
 		var eexecute = function() {
-		var eheightf = $('#eheightf').val();
-		var eheighti = $('#eheighti').val();
-		var eweight = $('#eweight').val();
-		var ecalculated_bmi = eBMI(eheightf, eheighti, eweight);
+		var ehf = $('#eheightf').val();
+		var ehi = $('#eheighti').val();
+		var ewt = $('#eweight').val();
+		var ecalculated_bmi = eBMI(ehf, ehi, ewt);
 		$('#eres').text(ecalculated_bmi);
 
 		$('#ebmic').css("display", "inline");
@@ -322,16 +322,15 @@
 
 	}
 
-	var eBMI = function(ehf, ehi, ewt) {
-		var ehf;
+	var eBMI = function(ehf, ehi, ewt, stepone, steptwo, stepthree, stepfour, stepfive) {
+		var ehf = ehf * 12;
 		var ehi;
 		var ewt;
-		var stepone = (ehf*12);
-		var steptwo = (stepone+ehi);
-		var stepthree = (steptwo*steptwo);
-		var stepfour = (ewt / stepthree);
-		var eresult = (stepfour * 703);
-		return eresult.toFixed(2);
+		var stepone = parseInt(ehf) + parseInt(ehi);
+		var steptwo = parseInt(stepone) * parseInt(stepone);
+		var stepthree = (ewt) / (steptwo);
+		var stepfour = stepthree * 703;
+		return stepfour.toFixed(2);
 	}
 
 	$('#ecalculate').click(function() {
