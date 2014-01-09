@@ -99,7 +99,7 @@
 			<table>
 				<tr>
 					<td><span>Height: </span></td>
-					<td><input type="text" id="erheight" class="prm"> in </td>
+					<td><input type="text" id="erheightf" class="prm"> ft <input type="text" id="erheighti" class="prm"> in </td>
 				</tr>
 				<tr>
 					<td><span>Goal BMI: </span></td>
@@ -369,6 +369,37 @@
             var code = (e.keyCode ? e.keyCode : e.which);
             if(code == 13) {
                 rexecute();
+            }
+        })
+
+	var erexecute = function() {
+		var erheightf = $('#erheightf').val();
+		var erheighti = $('#erheighti').val();
+		var erbmic = $('#ervbmi').val();
+		var ercalculated_bmi = eRBMI(erheightf, erheighti, erbmic);
+		$('#erres').text(ercalculated_bmi);
+
+	}
+
+	var eRBMI = function(erheightf, erheighti, erbmic, stepone, steptwo, stepthree, stepfour) {
+		var erheightf = erheightf*12;
+		var erheighti;
+		var erbmic;
+		var stepone = parseInt(erheightf) + parseInt(erheighti);
+		var steptwo = stepone * stepone;
+		var stepthree = erbmic * steptwo;
+		var stepfour = parseInt(stepthree) / 703;
+		return stepfour.toFixed(2);
+	}
+
+	$('#ervcalculate').click(function() {
+		erexecute();
+	})
+
+	$('#ervbmi').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+                erexecute();
             }
         })
 
