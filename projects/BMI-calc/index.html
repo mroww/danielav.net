@@ -80,7 +80,7 @@
 			</div>
 			</div>
 			<br><br>
-			<div id="metricrbmi" style="display:none">
+			<div id="metricrbmi">
 			<table>
 				<tr>
 					<td><span>Height: </span></td>
@@ -95,7 +95,7 @@
 			<br> <br>
 			<div>You would need to have <span id="rres"></span> kg </div>
 			</div>
-			<div id="englishrbmi">
+			<div id="englishrbmi" style="display:none">
 			<table>
 				<tr>
 					<td><span>Height: </span></td>
@@ -120,16 +120,15 @@
 			<br><br>
 			<div id="switch3">
 			<div class="onoffswitch">
-    			<input type="radio" name="radiome" class="rradiomes" id="radio-bmre"> English
-    			<input type="radio" name="radiome" class="rradiomes" id="radio-bmrm"> Metric
+    			<input type="radio" name="radiome" class="rrradiomes" id="radio-bmre"> English
+    			<input type="radio" name="radiome" class="rrradiomes" id="radio-bmrm"> Metric
 			</div>
 			</div>
-			<div id="metricbmr" style="display:none">
+			<div id="metricbmr">
 			<table>
 				<tr>
 					<td><span>Gender: </span></td>
-					<td><input type="radio" id="bmrm" name="rbtn" class="bmrr"> Male</td>
-					<td><input type="radio" id="bmrf" name="rbtn" class="bmrr"> Female</td>
+					<td><input type="radio" id="bmrm" name="rbtn" class="bmrr"> Male <input type="radio" id="bmrf" name="rbtn" class="bmrr"> Female</td>
 				</tr>
 				<tr>
 					<td><span>Height: </span></td>
@@ -151,16 +150,15 @@
 			<div>You have a BMR of <span id="bmres" class="prm"></span> </div>
 			</div>
 
-			<div id="englishbmr">
+			<div id="englishbmr" style="display:none">
 			<table>
 				<tr>
 					<td><span>Gender: </span></td>
-					<td><input type="radio" id="ebmrm" name="rbtn" class="bmrr"> Male</td>
-					<td><input type="radio" id="ebmrf" name="rbtn" class="bmrr"> Female</td>
+					<td><input type="radio" id="ebmrm" name="rbtn" class="bmrr"> Male <input type="radio" id="ebmrf" name="rbtn" class="bmrr"> Female</td>
 				</tr>
 				<tr>
 					<td><span>Height: </span></td>
-					<td><input type="text" id="ebmrh" class="prm"> in</td>
+					<td><input type="text" id="ebmrhf" class="prm"> ft <input type="text" id="ebmrhi" class="prm"> in </td>
 				</tr>
 				<tr>
 					<td><span>Weight: </span></td>
@@ -237,11 +235,22 @@
 				console.log('1');
 	 			$('#metricrbmi').hide();
 	 			$('#englishrbmi').show();
-		};
+			};
 			if ($('#radio-rem').is(':checked')) {
 				console.log('2');
 				$('#englishrbmi').hide();
 	 			$('#metricrbmi').show();
+			}
+		})
+
+		$('.rrradiomes').click(function() {
+			if($('#radio-bmre').is(':checked')) {
+				$('#metricbmr').hide();
+				$('#englishbmr').show();
+			};
+			if($('#radio-bmrm').is(':checked')) {
+				$('#englishbmr').hide();
+				$('#metricbmr').show();
 			}
 		})
 
@@ -458,6 +467,79 @@
             	}
             	if($('#bmrf').is(':checked')) {
             		bmrexecutef();
+            	}
+            }
+        });
+
+	var ebmrexecutem = function() {
+		var ebmrhf = $('#ebmrhf').val();
+		var ebmrhi = $('#ebmrhi').val();
+		var ebmrw = $('#ebmrw').val();
+		var ebmra = $('#ebmra').val();
+		var ecalculated_bmrm = eBMRm(ebmrhf, ebmrhi, ebmrw, ebmra);
+		$('#ebmres').text(ecalculated_bmrm);
+
+	}
+
+	var ebmrexecutef = function() {
+		var ebmrhf = $('#ebmrhf').val();
+		var ebmrhi = $('#ebmrhi').val();
+		var ebmrw = $('#ebmrw').val();
+		var ebmra = $('#ebmra').val();
+		var ecalculated_bmrf = eBMRf(ebmrhf, ebmrhi, ebmrw, ebmra);
+		$('#ebmres').text(ecalculated_bmrf);
+
+	}
+
+
+	var eBMRm = function(ebmrhf, ebmrhi, ebmrw, ebmra, h, w, a, plus) {
+		var ebmrhf = ebmrhf * 12;
+		var ebmrhi;
+		var ebmrw;
+		var ebmra;
+		var convh = (parseInt(ebmrhf) + parseInt(ebmrhi)) * 2.54;
+		var convw = parseInt(ebmrw) / 2.2046;
+		var h = (parseInt(convh)*6.25);
+		var w = (parseInt(convw)*10);
+		var a = (parseInt(ebmra)*5);
+		var plus = 66;
+		var emresult= parseInt(h)+parseInt(w)-parseInt(a)+parseInt(plus);
+		return emresult.toFixed(1);
+	}
+
+	var eBMRf = function(ebmrhf, ebmrhi, ebmrw, ebmra, h, w, a, plus) {
+		var ebmrhf = ebmrhf * 12;
+		var ebmrhi;
+		var ebmrw;
+		var ebmra;
+		var convh = (parseInt(ebmrhf) + parseInt(ebmrhi)) * 2.54;
+		var convw = parseInt(ebmrw) / 2.2046;
+		var h = (parseInt(convh)*6.25);
+		var w = (parseInt(convw)*10);
+		var a = (parseInt(ebmra)*5);
+		var plus = 161;
+		var efresult= parseInt(h)+parseInt(w)-parseInt(a)-parseInt(plus);
+		return efresult.toFixed(1);
+		}
+   
+
+	$('#ebmrcalculate').click(function() {
+		if($('#ebmrm').is(':checked')) {
+			ebmrexecutem();
+		}
+		if($('#ebmrf').is(':checked')) {
+			ebmrexecutef();
+		}
+	})
+
+	$('#ebmra').on('keypress', function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) {
+            	if($('#ebmrm').is(':checked')) {
+            		ebmrexecutem();
+            	}
+            	if($('#ebmrf').is(':checked')) {
+            		ebmrexecutef();
             	}
             }
         });
