@@ -182,7 +182,30 @@
 			<div id="calc4">
 				<span>Body fat percentage calculator</span>
 			</div>
+			<br><br>
+			<div id="switch4">
+			<div class="onoffswitch">
+    			<input type="radio" name="radiome" class="rrrradiomes" id="radio-bfpe"> English
+    			<input type="radio" name="radiome" class="rrrradiomes" id="radio-bfpm"> Metric
+			</div>
+			<br>
+			</div>
+			<div id="metricbfp">
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="bfpm" class="genr" name="rbtnfat"> Male</td>
+					<td><input type="radio" id="bfpf" class="genr" name="rbtnfat"> Female</td>
+				</tr>
+			<br><br>
 			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="bfph" class="prm"> cm</td>
+				</tr>
+				<tr>
+					<td><span>Neck: </span></td>
+					<td><input type="text" id="bfpn" class="prm"> cm</td>
+				</tr>
 				<tr>
 					<td><span>Waist: </span></td>
 					<td><input type="text" id="bfpw" class="prm"> cm</td>
@@ -191,26 +214,45 @@
 					<td><span>Hips: </span></td>
 					<td><input type="text" id="bfphip" class="prm"> cm</td>
 				</tr>
-				<tr>
-					<td><span>Neck: </span></td>
-					<td><input type="text" id="bfpn" class="prm"> cm</td>
-				</tr>
-				<tr>
-					<td><span>Height: </span></td>
-					<td><input type="text" id="bfph" class="prm"> cm</td>
-				</tr>
-				<tr>
-					<td><span>Gender: </span></td>
-					<td><input type="radio" id="bfpm" class="genr" name="rbtnfat"> Male</td>
-					<td><input type="radio" id="bfpf" class="genr" name="rbtnfat"> Female</td>
-				</tr>
 			</table>
-			<br>
-			
 			<br>
 			<input type="button" value="Calculate" id="fatcalculate">
 			<br> <br>
 			<div>You have a body fat percentage of <span id="bfres"></span>.</div>
+		</div>
+
+		<div id="englishbfp" style="display:none">
+				<tr>
+					<td><span>Gender: </span></td>
+					<td><input type="radio" id="ebfpm" class="egenr" name="erbtnfat"> Male</td>
+					<td><input type="radio" id="ebfpf" class="egenr" name="erbtnfat"> Female</td>
+				</tr>
+			<br><br>
+			<table>
+				<tr>
+					<td><span>Height: </span></td>
+					<td><input type="text" id="ebfphf" class="prm"> ft <input type="text" id="ebfphi" class="prm"> in</td>
+				</tr>
+				<tr>
+					<td><span>Neck: </span></td>
+					<td><input type="text" id="ebfpn" class="prm"> in</td>
+				</tr>
+				<tr>
+					<td><span>Waist: </span></td>
+					<td><input type="text" id="ebfpw" class="prm"> in</td>
+				</tr>
+				<tr id="esh">
+					<td><span>Hips: </span></td>
+					<td><input type="text" id="ebfphip" class="prm"> in</td>
+				</tr>
+				
+				
+			</table>
+			<br>
+			<input type="button" value="Calculate" id="efatcalculate">
+			<br> <br>
+			<div>You have a body fat percentage of <span id="ebfres"></span>.</div>
+		</div>
 		</div>
 	</div>
 </body>
@@ -251,6 +293,17 @@
 			if($('#radio-bmrm').is(':checked')) {
 				$('#englishbmr').hide();
 				$('#metricbmr').show();
+			}
+		})
+
+		$('.rrrradiomes').click(function() {
+			if($('#radio-bfpe').is(':checked')) {
+				$('#metricbfp').hide();
+				$('#englishbfp').show();
+			};
+			if($('#radio-bfpm').is(':checked')) {
+				$('#englishbfp').hide();
+				$('#metricbfp').show();
 			}
 		})
 
@@ -557,49 +610,58 @@
 		};
 	 })
 
-	
+	$('.egenr').click(function() {
+		if($('#ebfpm').is(':checked')){
+			$('#esh').hide();
+		};
+		if($('#ebfpf').is(':checked')){
+			$('#esh').show();
+		};
+	})
 
 	var BFPexecutem = function() {
-		var bfpwaist = $('#bfpw').val();
-		var bfpneck = $('#bfpn').val();
 		var bfpheight = $('#bfph').val();
-		var calculated_bfpm = BFPm(bfpwaist, bfpneck, bfpheight);
+		var bfpneck = $('#bfpn').val();
+		var bfpwaist = $('#bfpw').val();
+		var calculated_bfpm = BFPm(bfpheight, bfpneck, bfpwaist);
 		$('#bfres').text(calculated_bfpm);
 	}
 
 	var BFPexecutef = function() {
+		var bfpfheight = $('#bfph').val();
+		var bfpfneck = $('#bfpn').val();
 		var bfpfwaist = $('#bfpw').val();
 		var bfpfhip = $('#bfphip').val();
-		var bfpfneck = $('#bfpn').val();
-		var bfpfheight = $('#bfph').val();
-		var calculated_bfpf = BFPf(bfpfwaist, bfpfhip, bfpfneck, bfpfheight);
+		var calculated_bfpf = BFPf(bfpfheight, bfpfneck, bfpfwaist, bfpfhip);
 		$('#bfres').text(calculated_bfpf);
 	}
 
-	var BFPm = function(bfpwaist, bfpneck, bfpheight, p1, p2, p3, a, b) {
-		var bfpwaist;
-		var bfpneck;
-		var bfpheight;
-		var p1 = 86.010;
-		var p2 = 70.041;
-		var p3 = 30.30;
-		var a = log10(bfpwaist - bfpneck);
+	var BFPm = function(bfpheight, bfpneck, bfpwaist, one, two, three, a0, a, b) {
+		var bfpheight = bfpheight*0.393700787;
+		var bfpneck = bfpneck*0.393700787;
+		var bfpwaist = bfpwaist*0.393700787;
+		var one = 86.010;
+		var two = 70.041;
+		var three = 36.76;
+		var a0 = parseInt(bfpwaist) - parseInt(bfpneck);
+		var a = log10(a0);
 		var b = log10(bfpheight);
-		var bfpmresult = p1 * a - p2 * b + p3;
+		var bfpmresult = (one) * (a) - (two) * (b) + (three);
 		return bfpmresult.toFixed(2);
 	}
 
-	var BFPf = function(bfpfwaist, bfpfhip, bfpfneck, bfpfheight, pf1, pf2, pf3, af, bf) {
-		var bfpfwaist;
-		var bfpfhip;
-		var bfpfneck;
-		var bfpfheight;
-		var pf1 = 163.205;
-		var pf2 = 97.684;
-		var pf3 = 104.912;
-		var af = log10((bfpfwaist + bfpfhip) - bfpfneck);
+	var BFPf = function(bfpfheight, bfpfneck, bfpfwaist, bfpfhip, one, two, three, af0, af, bf) {
+		var bfpfheight = bfpfheight*0.393700787;
+		var bfpfneck = bfpfneck*0.393700787;
+		var bfpfwaist = bfpfwaist*0.393700787;
+		var bfpfhip = bfpfhip*0.393700787;
+		var one = 163.205;
+		var two = 97.684;
+		var three = 78.387;
+		var af0 = ((parseInt(bfpfwaist) + parseInt(bfpfhip)) - parseInt(bfpfneck));
+		var af = log10(af0);
 		var bf = log10(bfpfheight);
-		var bfpfresult = ((pf1 * af) - (pf2 * bf) - pf3);
+		var bfpfresult = ((one * af) - (two * bf) - three);
 		return bfpfresult.toFixed(2);
 	}
 
@@ -610,6 +672,68 @@
 		};
 		if($('#bfpf').is(':checked')) {
 			BFPexecutef();
+		}
+	});
+
+	var eBFPexecutem = function() {
+		var ebfpheightf = $('#ebfphf').val();
+		var ebfpheighti = $('#ebfphi').val();
+		var ebfpneck = $('#ebfpn').val();
+		var ebfpwaist = $('#ebfpw').val();
+		var ecalculated_bfpm = eBFPm(ebfpheightf, ebfpheighti, ebfpneck, ebfpwaist);
+		$('#ebfres').text(ecalculated_bfpm);
+	}
+
+	var eBFPexecutef = function() {
+		var ebfpheightf = $('#ebfphf').val();
+		var ebfpheighti = $('#ebfphi').val();
+		var ebfpneck = $('#ebfpn').val();
+		var ebfpwaist = $('#ebfpw').val();
+		var ebfphip = $('#ebfphip').val();
+		var ecalculated_bfpf = eBFPf(ebfpheightf, ebfpheighti, ebfpneck, ebfpwaist, ebfphip);
+		$('#ebfres').text(ecalculated_bfpf);
+	}
+
+	var eBFPm = function(ebfpheightf, ebfpheighti, ebfpneck, ebfpwaist, convh, p1, p2, p3, a0, a, b) {
+		var ebfpheightf = ebfpheightf * 12;
+		var ebfpheighti;
+		var ebfpneck;
+		var ebfpwaist;
+		var convh = (parseInt(ebfpheightf) + parseInt(ebfpheighti));
+		var p1 = 86.010;
+		var p2 = 70.041;
+		var p3 = 36.76;
+		var a0 = parseInt(ebfpwaist) - parseInt(ebfpneck);
+		var a = log10(a0);
+		var b = log10(convh);
+		var ebfpmresult = (p1) * (a) - (p2) * (b) + (p3);
+		return ebfpmresult.toFixed(2);
+	}
+
+	var eBFPf = function(ebfpheightf, ebfpheighti, ebfpneck, ebfpwaist, ebfphip, pf1, pf2, pf3, af0, af, bf) {
+		var ebfpheightf = ebfpheightf * 12;
+		var ebfpheighti;
+		var ebfpneck;
+		var ebfpwaist;
+		var ebfphip;
+		var convh = (parseInt(ebfpheightf) + parseInt(ebfpheighti));
+		var pf1 = 163.205;
+		var pf2 = 97.684;
+		var pf3 = 78.387;
+		var af0 = ((parseInt(ebfpwaist) + parseInt(ebfphip)) - parseInt(ebfpneck));
+		var af = log10(af0);
+		var bf = log10(convh);
+		var ebfpfresult = ((pf1 * af) - (pf2 * bf) - pf3);
+		return ebfpfresult.toFixed(2);
+	}
+
+
+	$('#efatcalculate').click(function() {
+		if($('#ebfpm').is(':checked')) {
+			eBFPexecutem();
+		};
+		if($('#ebfpf').is(':checked')) {
+			eBFPexecutef();
 		}
 	});
 
