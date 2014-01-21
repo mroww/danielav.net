@@ -7,6 +7,15 @@ body {
 	font-size: 14;
 }
 
+#titles-left {
+	float: left;
+}
+
+#conts-right {
+	float: right;
+	width: 
+}
+
 #calc-bord {
 	border: 5px solid #242424;
 	border-radius: 2%;
@@ -14,7 +23,7 @@ body {
 	/*height: 500px;*/
 	margin: 25px;
 	padding: 15px;
-	float: right;
+	/*float: right;*/
 	display: none;
 }
 
@@ -35,7 +44,7 @@ body {
 	margin: 25px;
 	margin-bottom: 80px;
 	padding: 15px;
-	float: right;
+	/*float: right;*/
 	display: none;
 }
 
@@ -47,7 +56,7 @@ body {
 	margin: 25px;
 	padding-bottom: 50px;
 	padding: 15px;
-	float: right;
+	/*float: right;*/
 	display: none;
 }
 
@@ -58,7 +67,7 @@ body {
 	/*height: 330px;*/
 	margin: 25px;
 	padding: 15px;
-	float: right;
+	/*float: right;*/
 	display: none;
 }
 
@@ -195,7 +204,7 @@ body {
 /*	border: 5px solid #242424;
 	border-radius: 2%;
 */	width: 780px;
-	height: 1100px;
+	height: 650px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top: 50px;

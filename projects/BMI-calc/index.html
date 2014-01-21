@@ -11,11 +11,18 @@
 <body>
 	<div id="conts">
 		<div id="title">
-			<span id="bmictitle">Body mass index calculators</span>
+			<span id="bmictitle">Body calculators</span>
 			<br>
-			<span id="note1">Maybe if these are unfinished on git instead of just locally, I will pressure myself into getting them done sooner.</span>
 		</div>
-		<div id="nm1">BMI calculator</div>
+		<div id="titles-left">
+			<div id="nm1">BMI calculator</div>
+			<div id="nm2">Reversed BMI calculator</div>
+			<div id="nm3">BMR calculator</div>
+			<div id="nm4">Body fat percentage calculator</div>
+		</div>
+
+		<div id="conts-right">
+			
 		<div id="calc-bord">
 			<div id="calc1">
 				<span>BMI calculator</span>
@@ -67,7 +74,7 @@
 			</div>
 		</div>
 
-		<div id="nm2">Reversed BMI calculator</div>
+		
 		<div id="rcalc-bord">
 			<div id="calc2">
 				<span>Reversed BMI calculator</span>		
@@ -112,7 +119,6 @@
 			</div>
 		</div>
 
-		<div id="nm3">BMR calculator</div>
 		<div id="bmr-bord">
 			<div id="calc3">
 				<span>BMR calculator</span>			
@@ -177,7 +183,7 @@
 			</div>
 		</div>
 
-		<div id="nm4">Body fat percentage calculator</div>
+		
 		<div id="bfp-bord">
 			<div id="calc4">
 				<span>Body fat percentage calculator</span>
@@ -253,6 +259,8 @@
 			<br> <br>
 			<div>You have a body fat percentage of <span id="ebfres"></span>.</div>
 		</div>
+		</div>
+
 		</div>
 	</div>
 </body>
@@ -738,31 +746,31 @@
 	});
 
 	$("#nm1").click(function(){
-		$("#calc-bord").slideToggle();
-		$("#rcalc-bord").slideUp();
-		$("#bmr-bord").slideUp();
-		$("#bfp-bord").slideUp();
+		$("#calc-bord").show();
+		$("#rcalc-bord").hide();
+		$("#bmr-bord").hide();
+		$("#bfp-bord").hide();
 	});
 
 	$("#nm2").click(function(){
-		$("#rcalc-bord").slideToggle();
-		$("#calc-bord").slideUp();
-		$("#bmr-bord").slideUp();
-		$("#bfp-bord").slideUp();
+		$("#rcalc-bord").show();
+		$("#calc-bord").hide();
+		$("#bmr-bord").hide();
+		$("#bfp-bord").hide();
 	});
 
 	$("#nm3").click(function(){
-		$("#bmr-bord").slideToggle();
-		$("#calc-bord").slideUp();
-		$("#rcalc-bord").slideUp();
-		$("#bfp-bord").slideUp();
+		$("#bmr-bord").show();
+		$("#calc-bord").hide();
+		$("#rcalc-bord").hide();
+		$("#bfp-bord").hide();
 	});
 	
 	$("#nm4").click(function(){
-		$("#bfp-bord").slideToggle();
-		$("#calc-bord").slideUp();
-		$("#rcalc-bord").slideUp();
-		$("#bmr-bord").slideUp();
+		$("#bfp-bord").show();
+		$("#calc-bord").hide();
+		$("#rcalc-bord").hide();
+		$("#bmr-bord").hide();
 	});
 
 
