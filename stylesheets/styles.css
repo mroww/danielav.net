@@ -334,3 +334,7 @@ footer {
 .icon-button:hover .icon-google-plus {
   color: white;
 }
+
+#player {
+  padding: 3%
+}
