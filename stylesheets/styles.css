@@ -259,6 +259,12 @@ footer {
   }
 }
 
+#socialContainer {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
 .icon-button {
   background-color: white;
   border-radius: 3.6rem;
