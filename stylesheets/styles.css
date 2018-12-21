@@ -40,8 +40,8 @@ h3, h4, h5, h6 {
 
 a {
   color:#001E1E;
-  font-weight:400;
-  text-decoration:underline;
+  font-weight:900;
+  text-decoration: bold;
 }
 
 a small {
@@ -257,6 +257,11 @@ footer {
     font-size:12pt;
     color:#444;
   }
+}
+
+#list {
+  font-size: 12pt;
+  font-style: bold;
 }
 
 #socialContainer {
