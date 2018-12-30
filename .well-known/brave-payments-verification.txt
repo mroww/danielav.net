@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: danielav.xyz
+Token: 3c8e0768a1c57e1d4c15209c349d51dac180f297099fb7d3c263ae0cb84b4781
